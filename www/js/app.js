@@ -5,8 +5,8 @@ charityApp.config( function ( $stateProvider , $urlRouterProvider ) {
     $urlRouterProvider.otherwise( '/' );
 
     $stateProvider
-        .state( '' , {
-            url: '/state' ,
-            'templateUrl': ''
+        .state( '/' , {
+            url: '/' ,
+            templateUrl: 'js/controllers/main/main.html'
         } );
 } );
