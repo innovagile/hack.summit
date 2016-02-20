@@ -11,13 +11,13 @@
 
         var dashboard = this;
         console.log("it works");
-        NgMap.getMap().then(function(map) {
+        NgMap.getMap().then(function (map) {
             console.log(map.getCenter());
             console.log('markers', map.markers);
             console.log('shapes', map.shapes);
         });
 
-        dashboard.test = "pass";
+        dashboard.breadcrumb = "Dashboard";
 
     }
 
