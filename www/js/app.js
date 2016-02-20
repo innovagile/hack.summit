@@ -1,12 +1,23 @@
-var charityApp = angular.module( "charityApp" , ['ui.router'] );
+(function () {
+    'use strict';
 
-charityApp.config( function ( $stateProvider , $urlRouterProvider ) {
+    var charityApp = angular
+        .module("charityApp", [
+            'ui.router',
+            'ngMap'
+        ]);
 
-    $urlRouterProvider.otherwise( '/' );
+    var config = charityApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    $stateProvider
-        .state( '/' , {
-            url: '/' ,
-            templateUrl: 'js/controllers/main/main.html'
-        } );
-} );
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider
+            .state('/', {
+                url: '/',
+                templateUrl: 'js/controllers/main/main.html',
+                controller: 'DashboardCtrl',
+                controllerAs: 'dashboard'
+            });
+    });
+
+}());
