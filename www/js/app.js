@@ -12,11 +12,17 @@
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('/', {
+            .state('root', {
                 url: '/',
-                templateUrl: 'js/controllers/main/main.html',
+                templateUrl: 'js/dashboard/partials/dashboard.html',
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
+            })
+            .state('/organization', {
+                url: '/organization',
+                templateUrl: 'js/organization/partials/index.html',
+                controller: 'OrganizationCtrl',
+                controllerAs: 'organization'
             });
     });
 
