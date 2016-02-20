@@ -2887,7 +2887,7 @@ table.text-center th {
 }
 .users-list > li img {
   border-radius: 50%;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
 }
 .users-list > li > a:hover,
