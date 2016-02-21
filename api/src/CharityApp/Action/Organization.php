@@ -31,9 +31,9 @@ class Organization extends \CharityApp\Action
         $postData = json_decode($request->getBody());
         $organization = new \CharityApp\Entity\Organization(
             $postData->name,
-            isset($postData->slug) ? $postData->slug : preg_replace('/[^\w]/g', '', $postData->name),
+            isset($postData->slug) ? $postData->slug : preg_replace('/[^\w]/', '', $postData->name),
             $postData->lat,
-            $postData->lng,
+            $postData->lon,
             '',
             $postData->desc
         );
