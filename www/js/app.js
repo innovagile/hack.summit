@@ -18,6 +18,18 @@
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
             })
+            .state('register', {
+                url: '/register',
+                templateUrl: 'js/common/partials/register.html',
+                controller: 'RegisterCtrl',
+                controllerAs: 'register'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'js/common/partials/login.html',
+                controller: 'LoginCtrl',
+                controllerAs: 'login'
+            })
             .state('organizationCreate', {
                 url: '/organization/create',
                 templateUrl: 'js/organization/partials/create.html',
