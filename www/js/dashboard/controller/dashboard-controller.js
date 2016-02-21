@@ -22,8 +22,7 @@
                     1: long
                 }
             };
-            dashboard.showCustomMarker(position);
-            console.log(lat, long);
+            //dashboard.showCustomMarker(position);
         };
 
         dashboard.mapPoints = OrganizationService.getMapPoints();
@@ -34,7 +33,6 @@
         dashboard.selected = {};
         NgMap.getMap().then(function (map) {
             dashboard.showCustomMarker = function (evt, point) {
-                console.log(evt);
                 angular.copy(point, dashboard.selected);
                 map.customMarkers.foo.setVisible(true);
                 map.customMarkers.foo.setPosition(this.getPosition());

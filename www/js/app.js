@@ -18,12 +18,6 @@
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
             })
-            .state('organization', {
-                url: '/organization',
-                templateUrl: 'js/organization/partials/index.html',
-                controller: 'OrganizationCtrl',
-                controllerAs: 'organization'
-            })
             .state('organizationCreate', {
                 url: '/organization/create',
                 templateUrl: 'js/organization/partials/create.html',

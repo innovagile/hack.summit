@@ -5,9 +5,9 @@
         .module('charityApp')
         .service('OrganizationService', OrganizationService);
 
-    OrganizationService.$inject = ['OrganizationFactory', '$q'];
+    OrganizationService.$inject = ['OrganizationFactory'];
 
-    function OrganizationService(OrganizationFactory, $q) {
+    function OrganizationService(OrganizationFactory) {
 
         var self = this;
 
@@ -21,7 +21,7 @@
             return OrganizationFactory.organizations[id];
         };
 
-        self.getMapPoints = function (id) {
+        self.getMapPoints = function () {
             angular.forEach(OrganizationFactory.organizations, (points) => {
                 self.points.push({
                     position: [

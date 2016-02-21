@@ -17,7 +17,6 @@
         organization.details = OrganizationService.getOrganization(organization.id);
 
 
-
     }
 
 

@@ -12,7 +12,6 @@
         var self = this;
 
         $http.get('http://169.54.146.72/api/v1/organization', {cache: true}).then(function (response) {
-            console.log(response.data);
             angular.copy(response.data.results, self.organizations);
         });
 
@@ -43,7 +42,6 @@
         ];
 
         return self;
-
 
     }
 
