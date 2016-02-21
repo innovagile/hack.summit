@@ -10,24 +10,46 @@
             <div class="box box-primary">
 
                 <!-- form start -->
-                <form role="form">
+                <form role="form" ng-submit="organization.send(organization.new)">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name">Organization name</label>
-                            <input type="text" class="form-control" id="name" placeholder="name">
+                            <input type="text" class="form-control" id="name"
+                                   required
+                                   placeholder="Name"
+                                   ng-model="organization.new.name">
                         </div>
                         <div class="form-group">
-                            <label for="desc">Organization logo</label>
-                            <textarea name="desc" id="desc" class="form-control"></textarea>
+                            <label for="desc">Organization description</label>
+                            <textarea name="desc" id="desc"
+                                      required
+                                      placeholder="Description"
+                                      class="form-control"
+                                      ng-model="organization.new.desc"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="logo">Organization logo</label>
-                            <input type="file" id="logo">
-                        </div>
-                    </div><!-- /.box-body -->
+                        <!--<div class="form-group">-->
+                        <!--<label for="logo">Organization logo</label>-->
+                        <!--<input type="file" id="logo">-->
+                        <!--</div>-->
 
+                        <div class="form-group">
+                            <label for="location">Enter an address:</label>
+                            <input places-auto-complete
+                                   id="location"
+                                   size=80
+                                   required
+                                   ng-model="organization.address"
+                                   class="form-control"
+                                   component-restrictions=""
+                                   types="['address']"
+                                   on-place-changed="organization.placeChanged()"/>
+
+                        </div>
+
+                        <ng-map></ng-map>
+                    </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-danger btn-flat pull-right">Create</button>
                     </div>
                 </form>
             </div>
