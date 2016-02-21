@@ -41,6 +41,12 @@
 
         ];
 
+        self.send = function(data) {
+            $http.post('http://169.54.146.72/api/v1/organization', data).then(function (response) {
+                console.log(response.data);
+            });
+        };
+
         return self;
 
     }
