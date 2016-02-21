@@ -5,13 +5,14 @@
         .module('charityApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope', 'NgMap', 'DashboardFactory'];
+    DashboardCtrl.$inject = ['$scope', 'NgMap', 'OrganizationService'];
 
-    function DashboardCtrl($scope, NgMap, DashboardFactory) {
+    function DashboardCtrl($scope, NgMap, OrganizationService) {
 
         var dashboard = this;
         dashboard.breadcrumb = "Dashboard";
-        dashboard.organizations = DashboardFactory.organizations;
+
+        dashboard.organizations = OrganizationService.getOrganizations();
 
         NgMap.getMap().then(function (map) {
             dashboard.showCustomMarker = function (evt) {

@@ -9,7 +9,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Organizations</h3>
-                    <input type="text" placeholder="search" ng-model="dashboard.search" class="form-control">
+                    <input type="text" placeholder="search" ng-model="dashboard.search.name" class="form-control">
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
                             <li class="item"
@@ -18,13 +18,14 @@
                                     <img src="img/unicef.png" alt="Product Image">
                                 </div>
                                 <div class="product-info">
-                                    <a ui-sref="/organization" class="product-title">{{organization.name}}</a>
-                        <span class="product-description">
-                          {{organization.description}}
-                        </span>
-                                    <small>lat: {{organization.lat }} long: {{organization.long}}</small>
+                                    <a ui-sref="organizationDetails({id: organization.id})"
+                                       class="product-title">{{organization.name}}</a>
+                                    <span class="product-description">
+                                      {{organization.description}}
+                                    </span>
+                                    <small>lat: {{organization.lat }} long: {{organization.long}} id: {{organization.id}}</small>
                                 </div>
-                            </li><!-- /.item -->
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer text-center">
-                                        <a ui-sref="/organization" class="uppercase">Dowiedz się więcej</a>
+                                        <a ui-sref="organization" class="uppercase">Dowiedz się więcej</a>
                                     </div>
                                     <!-- /.box-footer -->
                                 </div>
