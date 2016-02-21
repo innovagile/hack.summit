@@ -23,5 +23,11 @@ $container['entity_manager'] = function($c) {
     $paths = array(__DIR__ . "/resources/doctrine/");
     $isDevMode = true;
     $config = \Doctrine\ORM\Tools\Setup::createYAMLMetadataConfiguration($paths, $isDevMode);
-    return EntityManager::create($dbParams, $config);
+    $dbParams = [
+        'driver'   => 'pdo_mysql',
+        'user'     => $parameters['username'],
+        'password' => $parameters['password'],
+        'dbname'   => $parameters['database'],
+    ];
+    return \Doctrine\ORM\EntityManager::create($dbParams, $config);
 };
