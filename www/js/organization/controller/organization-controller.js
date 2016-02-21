@@ -5,9 +5,9 @@
         .module('charityApp')
         .controller('OrganizationCtrl', OrganizationCtrl);
 
-    OrganizationCtrl.$inject = ['$scope', 'NgMap', '$stateParams', '$state'];
+    OrganizationCtrl.$inject = ['$scope', 'NgMap', '$stateParams', '$state', 'OrganizationFactory'];
 
-    function OrganizationCtrl($scope, NgMap, $stateParams, $state) {
+    function OrganizationCtrl($scope, NgMap, $stateParams, $state, OrganizationFactory) {
 
         var organization = this;
         organization.breadcrumb = "Organization";
@@ -28,8 +28,8 @@
             OrganizationFactory.send({
                 name: data.name,
                 desc: data.desc,
-                lat: data.data.location.lat(),
-                long: data.data.location.lng()
+                lat: data.location.lat(),
+                long: data.location.lng()
             });
         }
     }
