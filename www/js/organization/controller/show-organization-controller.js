@@ -18,15 +18,15 @@
 
         organization.joined = [
             {
-                name: 'John doe',
+                name: 'John Doe',
                 photo: 'img/user1-128x128.jpg'
             },
             {
-                name: 'Jan Kowalski',
+                name: 'Alan Kowalski',
                 photo: 'img/user5-128x128.jpg'
             },
             {
-                name: 'Adam Nowak',
+                name: 'Mary Stewart',
                 photo: 'img/user3-128x128.jpg'
             }
         ];

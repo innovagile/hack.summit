@@ -16,7 +16,6 @@
 
         vm.placeChanged = function() {
             vm.place = this.getPlace();
-            organization.new = [];
             organization.new.location = vm.place.geometry.location;
             vm.map.setCenter(vm.place.geometry.location);
         };

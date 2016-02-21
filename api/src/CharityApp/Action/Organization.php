@@ -34,7 +34,7 @@ class Organization extends \CharityApp\Action
             isset($postData->slug) ? $postData->slug : preg_replace('/[^\w]/', '', $postData->name),
             $postData->lat,
             $postData->lon,
-            '',
+            empty($postData->blurb) ? '' : $postData->blurb,
             $postData->desc
         );
 

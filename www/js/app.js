@@ -27,7 +27,7 @@
             })
             .state('login', {
                 url: '/',
-                templateUrl: 'js/dashboard/partials/dashboard.html',
+                templateUrl: 'js/common/partials/login.html',
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
             })
