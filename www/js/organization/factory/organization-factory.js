@@ -11,7 +11,7 @@
 
         var self = this;
 
-        $http.get('api/v1/organization', {cache: true}).then(function (response) {
+        $http.get('/api/v1/organization', {cache: true}).then(function (response) {
             angular.copy(response.data.results, self.organizations);
         });
 
@@ -42,7 +42,7 @@
         ];
 
         self.send = function(data) {
-            $http.post('api/v1/organization', data).then(function (response) {
+            $http.post('/api/v1/organization', data).then(function (response) {
                 console.log(response.data);
             });
         };
