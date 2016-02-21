@@ -24,6 +24,12 @@
                 controller: 'OrganizationCtrl',
                 controllerAs: 'organization'
             })
+            .state('/organization/create', {
+                url: '/organization/create',
+                templateUrl: 'js/organization/partials/create.html',
+                controller: 'OrganizationCtrl',
+                controllerAs: 'organization'
+            })
             .state('/profile', {
                 url: '/profile',
                 templateUrl: 'js/profile/partials/show.html',
