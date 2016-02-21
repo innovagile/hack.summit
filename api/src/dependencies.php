@@ -19,12 +19,13 @@ $container['logger'] = function ($c) {
 };
 
 $container['entity_manager'] = function($c) {
-    $parameters = $c->get('settings')['parametrs'];
-    $paths = array(__DIR__ . "/resources/doctrine/");
+    $parameters = $c->get('parameters');
+    $paths = array(__DIR__ . "/CharityApp/resources/doctrine/");
     $isDevMode = true;
     $config = \Doctrine\ORM\Tools\Setup::createYAMLMetadataConfiguration($paths, $isDevMode);
     $dbParams = [
-        'driver'   => 'pdo_mysql',
+        'driver'   => 'pdo_pgsql',
+        'host'     => 'localhost',
         'user'     => $parameters['username'],
         'password' => $parameters['password'],
         'dbname'   => $parameters['database'],

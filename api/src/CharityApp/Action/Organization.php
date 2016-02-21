@@ -1,10 +1,17 @@
 <?php
 namespace CharityApp\Action;
 
+use Doctrine\ORM\EntityManager;
+
 class Organization extends \CharityApp\Action
 {
     public function get()
     {
+        /** @var EntityManager $em */
+        $em = $GLOBALS['app']->getContainer()->get('entity_manager');
+
+        $orgRepo = $em->getRepository(\CharityApp\Entity\Organization::class);
+
         $unicef = (object)[
             'id' => 1,
             'name' => 'UNICEF',
@@ -20,6 +27,7 @@ Source: wikipedia.org",
         ];
         $results = [];
         if (empty($this->args['slug'])) {
+            $results = $orgRepo->findAll();
             $results[] = $unicef;
             $results[] = (object)[
                 'id' => 2,
@@ -33,12 +41,15 @@ Source: wikipedia.org",
 UNESCO's aim is \"to contribute to the building of peace, the eradication of poverty, sustainable development and intercultural dialogue through education, the sciences, culture, communication and information\". Other priorities of the organization include attaining quality Education For All and lifelong learning, addressing emerging social and ethical challenges, fostering cultural diversity, a culture of peace and building inclusive knowledge societies through information and communication.",
             ];
         } else {
-            $results = $unicef;
+            $slug = $this->args['slug'];
+            $results = $orgRepo->findByName($slug);
+            $results[] = $unicef;
         }
         $resp = (object)[
             'status' => 'OK',
             'results' => $results,
         ];
+
         return $this->json($resp);
     }
 }
