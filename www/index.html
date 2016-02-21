@@ -22,25 +22,25 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a ui-sref="login" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Charity</b>APP</span>
         </a>
 
-        <nav class="navbar navbar-static-top" role="navigation">
+        <nav class="navbar navbar-static-top" role="navigation" ng-controller="LoginCtrl as vm">
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a ui-sref="profile">
                             <img src="css/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">John Doe</span>
+                            <span class="hidden-xs">{{vm.getCurrentUser()}}</span>
                         </a>
                     </li>
                     <li class="dropdown user user-menu">
-                        <a href="" ng-click="logout()">
+                        <a href="" ng-click="vm.logout()">
                             <strong>Logout</strong>
                         </a>
                     </li>
@@ -52,7 +52,7 @@
         <section class="sidebar">
             <ul class="sidebar-menu">
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a ui-sref="dashboard"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
                 <li><a ui-sref="organizationCreate"><i class="fa fa-link"></i> <span>Organization create</span></a></li>
             </ul><!-- /.sidebar-menu -->
         </section>
@@ -65,7 +65,7 @@
         <!-- Main content -->
         <section class="content">
 
-            <ui-view/>
+            <div ui-view></div>
 
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
@@ -75,6 +75,7 @@
 
 <script src="assets/lib/angular/angular.min.js"></script>
 <script src="assets/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="assets/lib/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="assets/lib/ngmap/build/scripts/ng-map.min.js"></script>
 <script src="http://maps.google.com/maps/api/js"></script>
 <script src="compiled/angular-compiled.js"></script>

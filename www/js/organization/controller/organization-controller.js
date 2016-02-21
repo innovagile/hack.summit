@@ -12,9 +12,6 @@
         var organization = this;
         organization.breadcrumb = "Organization";
 
-        organization.joinOrganization = function (user) {
-
-        }
     }
 
 

@@ -5,14 +5,26 @@
         .module('charityApp')
         .controller('LoginCtrl', LoginCtrl);
 
-    LoginCtrl.$inject = ['$scope'];
+    LoginCtrl.$inject = ['$scope', '$state', 'localStorageService'];
 
-    function LoginCtrl($scope) {
+    function LoginCtrl($scope, $state, localStorageService) {
 
-        var login = this;
+        var vm = this;
 
+        vm.login = function (e, user) {
+            e.preventDefault();
+            localStorageService.set('logged', user);
+            $state.go('dashboard');
+        };
+        vm.logout = function (user) {
+            localStorageService.remove('logged');
+            $state.go('login');
+        };
+
+        vm.getCurrentUser = function () {
+            return localStorageService.get('logged');
+        }
 
     }
-
 
 }());
