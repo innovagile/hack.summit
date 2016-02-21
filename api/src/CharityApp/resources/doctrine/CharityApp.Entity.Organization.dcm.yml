@@ -27,3 +27,7 @@ CharityApp\Entity\Organization:
             type: text
         description:
             type: text
+    manyToMany:
+        users:
+            targetEntity: User
+            mappedBy: organizations

@@ -2,14 +2,17 @@
 
 namespace CharityApp\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class User implements \JsonSerializable
 {
-    public $id;
-    public $username;
-    public $password;
-    public $firstName;
-    public $lastName;
-    public $bio;
+    private $id;
+    private $username;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $bio;
+    private $organizations;
 
     /**
      * User constructor.
@@ -20,7 +23,7 @@ class User implements \JsonSerializable
      * @param $lastName
      * @param $bio
      */
-    public function __construct($id, $username, $password, $firstName, $lastName, $bio)
+    public function __construct($id, $username, $password, $firstName, $lastName, $bio, array $organizations = [])
     {
         $this->id = $id;
         $this->username = $username;
@@ -28,6 +31,7 @@ class User implements \JsonSerializable
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->bio = $bio;
+        $this->organizations = new ArrayCollection($organizations);
     }
 
     /**
@@ -134,6 +138,26 @@ class User implements \JsonSerializable
     public function setBio($bio)
     {
         $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getOrganizations()
+    {
+        return $this->organizations;
+    }
+
+    public function addOrganization(Organization $organization)
+    {
+        $this->organizations->add($organization);
+    }
+
+    public function removeOrganization(Organization $organization)
+    {
+        $this->organizations->removeElement($organization);
 
         return $this;
     }

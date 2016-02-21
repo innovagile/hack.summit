@@ -1,7 +1,7 @@
-CharityApp\Entity\Organization:
+CharityApp\Entity\User:
     type: entity
     schema: public
-    table: organization
+    table: user
     id:
         id:
             type: bigint
@@ -25,3 +25,15 @@ CharityApp\Entity\Organization:
           column: last_name
       bio:
           type: text
+    manyToMany:
+        organizations:
+          targetEntity: CharityApp\Entity\Organization
+          inversedBy: users
+          joinTable:
+            name: user_organization
+            joinColumns:
+              user_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              organization_id:
+                referencedColumnName: id
