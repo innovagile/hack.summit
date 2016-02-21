@@ -16,7 +16,7 @@ class Organization extends \CharityApp\Action
             $results = $orgRepo->findAll();
         } else {
             $slug = $this->args['slug'];
-            $results = $orgRepo->findByName($slug);
+            $results = $orgRepo->findOneByName($slug);
         }
         $resp = (object)[
             'status' => 'OK',
