@@ -7,7 +7,7 @@
             'ngMap'
         ]);
 
-    var config = charityApp.config(function ($stateProvider, $urlRouterProvider) {
+    charityApp.config(function ($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');
 
