@@ -17,3 +17,11 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], Monolog\Logger::DEBUG));
     return $logger;
 };
+
+$container['entity_manager'] = function($c) {
+    $parameters = $c->get('settings')['parametrs'];
+    $paths = array(__DIR__ . "/resources/doctrine/");
+    $isDevMode = true;
+    $config = \Doctrine\ORM\Tools\Setup::createYAMLMetadataConfiguration($paths, $isDevMode);
+    return EntityManager::create($dbParams, $config);
+};

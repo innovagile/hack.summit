@@ -1,0 +1,32 @@
+CharityApp\Entity\Organization:
+    type: entity
+    schema: public
+    table: organization
+    id:
+        id:
+            type: bigint
+            column: id
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        name:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+        lat:
+            type: decimal
+            precision: 10
+            scale: 7
+        lon:
+            type: decimal
+            precision: 10
+            scale: 7
+        blurb:
+            type: text
+        description:
+            type: text
