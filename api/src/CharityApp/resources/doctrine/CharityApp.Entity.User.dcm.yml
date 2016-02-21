@@ -1,0 +1,27 @@
+CharityApp\Entity\Organization:
+    type: entity
+    schema: public
+    table: organization
+    id:
+        id:
+            type: bigint
+            column: id
+            generator:
+                strategy: AUTO
+    fields:
+      username:
+          type: string
+          length: 32
+      password:
+          type: string
+          length: 64
+      firstName:
+          type: string
+          length: 32
+          column: first_name
+      lastName:
+          type: string
+          length: 32
+          column: last_name
+      bio:
+          type: text
