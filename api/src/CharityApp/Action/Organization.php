@@ -52,4 +52,15 @@ UNESCO's aim is \"to contribute to the building of peace, the eradication of pov
 
         return $this->json($resp);
     }
+
+    public function post()
+    {
+        $request = $this->request;
+
+        $resp = (object)[
+            'status' => 'OK',
+        ];
+
+        return $this->json($resp);
+    }
 }

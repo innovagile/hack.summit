@@ -2,7 +2,7 @@
 
 namespace CharityApp\Entity;
 
-class Organization
+class Organization implements \JsonSerializable
 {
     private $id;
     private $name;
@@ -36,6 +36,14 @@ class Organization
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
@@ -49,6 +57,7 @@ class Organization
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -68,6 +77,7 @@ class Organization
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -87,6 +97,7 @@ class Organization
     public function setLat($lat)
     {
         $this->lat = $lat;
+
         return $this;
     }
 
@@ -106,6 +117,7 @@ class Organization
     public function setLon($lon)
     {
         $this->lon = $lon;
+
         return $this;
     }
 
@@ -125,6 +137,7 @@ class Organization
     public function setBlurb($blurb)
     {
         $this->blurb = $blurb;
+
         return $this;
     }
 
@@ -144,6 +157,20 @@ class Organization
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'lat' => $this->lat,
+            'lon' => $this->lon,
+            'blurb' => $this->blurb,
+            'description' => $this->description,
+        ];
     }
 }
