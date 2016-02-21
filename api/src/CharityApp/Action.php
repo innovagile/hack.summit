@@ -2,10 +2,13 @@
 
 namespace CharityApp;
 
+use Slim\Http\Request;
 use Slim\Http\Response;
 
 class Action
 {
+    /** @var  Request */
+    protected $request;
     public function __invoke($request, $response, $args)
     {
         $this->request = $request;

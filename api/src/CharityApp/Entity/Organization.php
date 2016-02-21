@@ -25,9 +25,8 @@ class Organization implements \JsonSerializable
      * @param $blurb
      * @param $description
      */
-    public function __construct($id, $name, $slug, $lat, $lon, $blurb, $description, array $users = [])
+    public function __construct($name, $slug, $lat, $lon, $blurb, $description, array $users = [])
     {
-        $this->id = $id;
         $this->name = $name;
         $this->slug = $slug;
         $this->lat = $lat;

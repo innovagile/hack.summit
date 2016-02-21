@@ -11,7 +11,6 @@ class Organization extends \CharityApp\Action
         $em = $GLOBALS['app']->getContainer()->get('entity_manager');
         $orgRepo = $em->getRepository(\CharityApp\Entity\Organization::class);
 
-        $results = [];
         if (empty($this->args['slug'])) {
             $results = $orgRepo->findAll();
         } else {
@@ -29,9 +28,24 @@ class Organization extends \CharityApp\Action
     public function post()
     {
         $request = $this->request;
+        $postData = json_decode($request->getBody());
+        $organization = new \CharityApp\Entity\Organization(
+            $postData->name,
+            isset($postData->slug) ? $postData->slug : preg_replace('/[^\w]/g', '', $postData->name),
+            $postData->lat,
+            $postData->lng,
+            '',
+            $postData->desc
+        );
+
+        /** @var EntityManager $em */
+        $em = $GLOBALS['app']->getContainer()->get('entity_manager');
+        $em->persist($organization);
+        $em->flush();
 
         $resp = (object)[
             'status' => 'OK',
+            $organization
         ];
 
         return $this->json($resp);
