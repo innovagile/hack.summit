@@ -3,7 +3,7 @@ namespace CharityApp\Action;
 
 class Home extends \CharityApp\Action
 {
-    public function get($request, $response, $args)
+    public function get()
     {
         return 'hi';
     }

@@ -3,8 +3,19 @@ namespace CharityApp\Action;
 
 class User extends \CharityApp\Action
 {
-    public function get($request, $response, $args)
+    public function get()
     {
-        return 'user hi';
+        $results = [];
+        $results[] = (object)[
+            'id' => 1,
+            'username' => 'userlogin',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ];
+        $resp = (object)[
+            'status' => 'OK',
+            'results' => $results,
+        ];
+        return $this->json($resp);
     }
 }

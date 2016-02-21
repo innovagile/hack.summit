@@ -3,8 +3,8 @@ namespace CharityApp\Action;
 
 class Organization extends \CharityApp\Action
 {
-    public function get($request, $response, $args)
+    public function get()
     {
-        return 'hi';
+        return 'organization';
     }
 }

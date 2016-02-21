@@ -12,25 +12,25 @@ class Action
         $this->response = $response;
         $this->args = $args;
 
-        return $this->dispatch($request, $response, $args);
+        return $this->dispatch();
     }
 
-    protected function dispatch($request, $response, $args)
+    protected function dispatch()
     {
-        $this->request = $request;
-        $this->response = $response;
-        $this->args = $args;
-
-        $method = strtolower($request->getMethod());
+        $method = strtolower($this->request->getMethod());
 
         if (!method_exists($this, $method)) {
-            return $response->write("Not implemented")->withStatus(501);
+            return $this->response->write('Not implemented')->withStatus(501);
         } else {
-            $r = $this->$method($request, $response, $args);
+            $r = $this->$method();
             if (!is_object($r) || get_class($r) != 'Slim\Http\Response') {
-                return $response->write($r);
+                return $this->response->write($r);
             }
             return $r;
         }
+    }
+    protected function json($resp)
+    {
+        return $this->response->write(json_encode($resp))->withHeader('Content-Type', 'application/json');
     }
 }
