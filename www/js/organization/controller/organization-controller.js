@@ -29,7 +29,7 @@
                 name: data.name,
                 desc: data.desc,
                 lat: data.location.lat(),
-                long: data.location.lng()
+                lon: data.location.lng()
             });
         }
     }
