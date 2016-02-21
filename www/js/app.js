@@ -27,9 +27,9 @@
             })
             .state('login', {
                 url: '/',
-                templateUrl: 'js/common/partials/login.html',
-                controller: 'LoginCtrl',
-                controllerAs: 'login'
+                templateUrl: 'js/dashboard/partials/dashboard.html',
+                controller: 'DashboardCtrl',
+                controllerAs: 'dashboard'
             })
             .state('organizationCreate', {
                 url: '/organization/create',

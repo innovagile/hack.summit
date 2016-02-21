@@ -5,10 +5,10 @@
         .module('charityApp')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope', 'NgMap', 'OrganizationService'];
+    DashboardCtrl.$inject = ['$scope', 'NgMap', 'OrganizationService', 'OrganizationFactory', 'localStorageService'];
 
-    function DashboardCtrl($scope, NgMap, OrganizationService) {
-
+    function DashboardCtrl($scope, NgMap, OrganizationService, OrganizationFactory, localStorageService) {
+        localStorageService.set('logged', 'John Doe');
         var dashboard = this;
         dashboard.breadcrumb = "Dashboard";
 
@@ -34,6 +34,7 @@
         NgMap.getMap().then(function (map) {
             dashboard.showCustomMarker = function (evt, point) {
                 angular.copy(point, dashboard.selected);
+                dashboard.selected.index = getOrganizationIndex(point.id);
                 map.customMarkers.foo.setVisible(true);
                 map.customMarkers.foo.setPosition(this.getPosition());
             };
@@ -42,6 +43,16 @@
             };
         });
 
+        function getOrganizationIndex(id) {
+            var idx = null;
+            angular.forEach(OrganizationFactory.organizations, function (o, key) {
+                if (o.id == id) {
+                    idx = key;
+                }
+            });
+
+            return idx;
+        }
     }
 
 

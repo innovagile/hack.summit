@@ -10,7 +10,7 @@
     function LoginCtrl($scope, $state, localStorageService) {
 
         var vm = this;
-
+        localStorageService.set('logged', 'John Doe');
         vm.login = function (e, user) {
             e.preventDefault();
             localStorageService.set('logged', user);
