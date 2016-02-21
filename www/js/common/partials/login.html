@@ -1,21 +1,23 @@
-<div class="login-box">
+<div class="login-box" ng-controller="LoginCtrl as login">
     <div class="login-logo">
         <a>CharityApp</a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="../../index2.html" method="post">
+        <form action="#" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="text" class="form-control" placeholder="Username" ng-model="login.user.name">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" ng-model="login.user.pass">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
                 <div class="col-xs-4 pull-right">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat pull-right">Sign In</button>
+                    <button type="submit"
+                            ng-click="login.login($event, login.user)"
+                            class="btn btn-primary btn-block btn-flat pull-right">Sign In</button>
                 </div><!-- /.col -->
             </div>
         </form>

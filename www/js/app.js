@@ -4,7 +4,8 @@
     var charityApp = angular
         .module("charityApp", [
             'ui.router',
-            'ngMap'
+            'ngMap',
+            'LocalStorageModule'
         ]);
 
     charityApp.config(function ($stateProvider, $urlRouterProvider) {
@@ -12,8 +13,8 @@
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('root', {
-                url: '/',
+            .state('dashboard', {
+                url: '/dashboard',
                 templateUrl: 'js/dashboard/partials/dashboard.html',
                 controller: 'DashboardCtrl',
                 controllerAs: 'dashboard'
@@ -25,7 +26,7 @@
                 controllerAs: 'register'
             })
             .state('login', {
-                url: '/login',
+                url: '/',
                 templateUrl: 'js/common/partials/login.html',
                 controller: 'LoginCtrl',
                 controllerAs: 'login'

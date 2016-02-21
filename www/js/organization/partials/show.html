@@ -11,7 +11,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{organization.details.name}}</h3>
-                    <button class="pull-right btn btn-danger btn-flat" ng-click="joinOrganization('user')">
+                    <button class="pull-right btn btn-danger btn-flat" ng-click="organization.join()">
                         <i class="fa fa-users"></i> Join
                     </button>
                 </div>
@@ -31,45 +31,10 @@
                             <hr>
                             <h3>Recent users</h3>
                             <ul class="users-list clearfix">
-                                <li>
-                                    <img src="img/user1-128x128.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">Alexander Pierce</a>
+                                <li ng-repeat="user in organization.joined">
+                                    <img ng-src="{{user.photo}}" alt="User Image">
+                                    <a class="users-list-name" href="#">{{user.name}}</a>
                                     <span class="users-list-date">Today</span>
-                                </li>
-                                <li>
-                                    <img src="img/user8-128x128.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">Norman</a>
-                                    <span class="users-list-date">Yesterday</span>
-                                </li>
-                                <li>
-                                    <img src="img/user7-128x128.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">Jane</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="img/user6-128x128.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">John</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="img/user2-160x160.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">Alexander</a>
-                                    <span class="users-list-date">13 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="img/user5-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Sarah</a>
-                                    <span class="users-list-date">14 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="img/user4-128x128.jpg" alt="User Image" class="hoverZoomLink">
-                                    <a class="users-list-name" href="#">Nora</a>
-                                    <span class="users-list-date">15 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="img/user3-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Nadia</a>
-                                    <span class="users-list-date">15 Jan</span>
                                 </li>
                             </ul>
 
