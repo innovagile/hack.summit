@@ -1,2 +1,4 @@
 .idea
 /www/assets
+node_modules
+www/compiled

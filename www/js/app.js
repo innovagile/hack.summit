@@ -23,6 +23,12 @@
                 templateUrl: 'js/organization/partials/index.html',
                 controller: 'OrganizationCtrl',
                 controllerAs: 'organization'
+            })
+            .state('/profile', {
+                url: '/profile',
+                templateUrl: 'js/profile/partials/show.html',
+                controller: 'ProfileCtrl',
+                controllerAs: 'profile'
             });
     });
 
