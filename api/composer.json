@@ -3,6 +3,9 @@
     "description": "A charity app based on Slim Framework skeleton application - slim/slim-skeleton",
     "keywords": ["project"],
     "homepage": "http://169.54.146.72/",
+    "autoload": {
+        "psr-0": { "CharityApp": "src/" }
+    },
     "require": {
         "php": ">=5.5.0",
         "slim/slim": "^3.1",
