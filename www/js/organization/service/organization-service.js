@@ -11,6 +11,8 @@
 
         var self = this;
 
+        self.points = [];
+
         self.getOrganizations = function () {
             return OrganizationFactory.organizations
         };
@@ -19,8 +21,22 @@
             return OrganizationFactory.organizations[id];
         };
 
-        return self;
-    }
+        self.getMapPoints = function (id) {
+            angular.forEach(OrganizationFactory.organizations, (points) => {
+                self.points.push({
+                    position: [
+                        points.lat,
+                        points.long
+                    ],
+                    name: points.name,
+                    description: points.description,
+                    id: points.id
+                });
 
+            });
+
+            return self.points;
+        };
+    }
 
 }());

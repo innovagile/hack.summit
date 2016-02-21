@@ -23,7 +23,11 @@
                                     <span class="product-description">
                                       {{organization.description}}
                                     </span>
-                                    <small>lat: {{organization.lat }} long: {{organization.long}} id: {{organization.id}}</small>
+                                    <br>
+                                    <a href="" ng-click="dashboard.center(organization.lat, organization.long)">
+                                        <span class="fa fa-map-marker text-red"></span> Show
+                                    </a>
+                                    <!--<small>lat: {{organization.lat }} long: {{organization.long}} id: {{organization.id}}</small>-->
                                 </div>
                             </li>
                         </ul>
@@ -32,11 +36,15 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <ng-map zoom="13" center="1600 pennsylvania ave, washington DC" style="height:600px"
+
+            <ng-map zoom="13" center="[{{dashboard.lat}}, {{dashboard.long}}]" style="height:600px"
                     on-center-changed="centerCustomMarker()">
-                <marker position="10 pennsylvania ave, washington DC" on-click="dashboard.showCustomMarker()"></marker>
-                <marker position="2600 pennsylvania ave, washington DC"
-                        on-click="dashboard.showCustomMarker()"></marker>
+                <marker
+                        ng-repeat="point in dashboard.mapPoints"
+                        position="{{ point.position }}"
+                        title="hello"
+                        animation="Animation.DROP"
+                        on-click="dashboard.showCustomMarker(point)">
                 <custom-marker id="foo" position="10 pennsylvania ave, washington DC"
                                on-click="dashboard.closeCustomMarker()">
                     <div>
@@ -44,7 +52,7 @@
                             <div class="col-sm-12">
                                 <div class="box box-danger">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">UNICEF</h3>
+                                        <h3 class="box-title">{{dashboard.selected.name}}</h3>
 
                                         <div class="box-tools pull-right">
                                             <span class="label label-danger">8 New Members</span>
@@ -67,10 +75,7 @@
                                             <span class="product-description">
                                               <span>
 
-                                                  Organizacja humanitarna będąca częścią systemu ONZ. <br>
-                                                  Główna siedziba UNICEF znajduje się w Nowym Jorku. <br><br>
-                                                  Po roku 1954, kiedy to UNICEF na stałe został włączony do ONZ, <br>
-                                                  jego zakres działania znacznie się poszerzył.
+                                                  {{ dashboard.selected.description}}
 
                                               </span>
                                             </span>
@@ -81,7 +86,7 @@
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer text-center">
-                                        <a ui-sref="organization" class="uppercase">Dowiedz się więcej</a>
+                                        <a ui-sref="organizationDetails({id: dashboard.selected.id})" class="uppercase">Dowiedz się więcej</a>
                                     </div>
                                     <!-- /.box-footer -->
                                 </div>
